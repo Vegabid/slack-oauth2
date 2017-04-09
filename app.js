@@ -57,8 +57,10 @@ app.get('/', function(req, res){
 
   var code = req.param('code');
   var resp = client.getAccessToken(code);
-  resp.then(function(result){
+  resp.then((result) => {
     console.log(result);
+  }).catch((err) => {
+    console.log(err.message);
   });
   res.redirect('http://www.google.com');
 

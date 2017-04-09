@@ -2,3 +2,5 @@ bin
 node_modules
 ngrok
 .env
+.idea
+slack-oauth2.iml

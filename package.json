@@ -2,6 +2,7 @@
   "name": "oauth2",
   "version": "0.0.0",
   "private": true,
+  "_from": "git+https://f157597c602d6dbc2f9d8504cde0621750efeb:x-oauth-basic@github.com/koustubh25/slack-oauth2.git",
   "dependencies": {
   }
 }

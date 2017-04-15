@@ -17,6 +17,7 @@ You can install using npm
 In express
 
 ```
+var express = require('express');
 var Client = require('oauth2');
 var client = new Client();
 client.createCredentials({
@@ -28,9 +29,12 @@ client.createCredentials({
 client.setAuthEndPoint("https://slack.com/oauth/authorize");
 client.setOauthEndPoint("https://slack.com/api/oauth.access");
 
+var app = express();
 
 app.get('/<add slack button page>', (req, res, next) => {
-    res.write('<a href="' + client.getAuthUrl() + '"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>');
+    res.write('<a href="' + client.getAuthUrl() + '">
+                <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" />
+                </a>');
     res.end();
 });
 
@@ -54,7 +58,7 @@ Result contains code like the following:
 {
     "ok":true,
     "access_token":"<Your access token>",
-    "scope":"identify,bot,commands,incoming-webhook,channels:read,chat:write:bot",
+    "scope":"channels:read,chat:write:bot",
     "user_id":"<some user id>",
     "team_name":"<some name>",
     "team_id":"<some id>"
